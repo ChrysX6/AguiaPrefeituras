@@ -1,0 +1,203 @@
+* { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+body { margin: 0; background: #f4f6f8; color: #1f2937; }
+.hidden { display: none !important; }
+
+header {
+  background: #0a1a33;
+  color: #fff;
+  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.logo-wrap {
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+.logo-img { height: 34px; display: block; }
+
+.header-titles h1 { font-size: 19px; margin: 0; line-height: 1.2; }
+.header-subtitle { font-size: 11px; color: #c8a24a; opacity: 0.9; }
+
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+  border: 2px solid #1e40af;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary:hover { background: #1e40af; }
+.btn-full { width: 100%; margin-top: 6px; }
+
+.btn-secundario {
+  background: #fff;
+  border: 2px solid #94a3b8;
+  color: #334155;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filtros {
+  display: flex;
+  gap: 12px;
+  padding: 20px 30px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filtros input[type="text"], .filtros select {
+  padding: 8px 10px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.checkbox-filtro, .checkbox-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #64748b;
+  border-radius: 4px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.dica-mobile {
+  display: none;
+  margin: 0 30px 12px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.tabela-container { padding: 0 30px 30px; overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+  font-size: 13px;
+}
+th { background: #e2e8f0; font-weight: 700; }
+tr:hover { background: #f1f5f9; }
+
+td.editavel { cursor: pointer; }
+td.editavel:active { background: #e2e8f0; }
+td.editando { padding: 4px 6px; background: #eff6ff; }
+td.salvando { opacity: 0.6; }
+
+.input-celula {
+  width: 100%;
+  padding: 6px;
+  border: 2px solid #2563eb;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.badge-ativo { color: #16a34a; font-weight: 700; }
+.badge-inativo { color: #dc2626; font-weight: 700; }
+
+.cel-senha { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.senha-mascarada { letter-spacing: 1px; }
+.btn-olho {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.btn-olho:hover { background: #e2e8f0; }
+
+.acoes button {
+  border: 2px solid #cbd5e1;
+  background: #fff;
+  border-radius: 5px;
+  padding: 6px 10px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+.acoes button:hover { background: #f1f5f9; }
+
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  z-index: 50;
+}
+.modal-overlay.hidden { display: none; }
+.modal-box {
+  background: #fff;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 24px;
+  width: 480px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-box label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.modal-box input[type="text"], .modal-box input[type="password"], .modal-box input[type="date"], .modal-box select {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  margin-top: 4px;
+  font-size: 14px;
+}
+.modal-botoes { display: flex; gap: 10px; margin-top: 16px; }
+
+.login-box { width: 340px; text-align: center; }
+.logo-wrap-login { display: inline-flex; margin-bottom: 14px; }
+.login-box h2 { margin: 0 0 4px; color: #0a1a33; }
+.login-subtitulo { margin: 0 0 16px; color: #64748b; font-size: 13px; }
+.login-box form { text-align: left; }
+.login-erro { color: #dc2626; font-size: 13px; min-height: 18px; margin: 6px 0 0; }
+
+/* Ajustes para toque em celular */
+@media (max-width: 720px) {
+  header { padding: 14px 16px; }
+  .filtros, .tabela-container { padding-left: 16px; padding-right: 16px; }
+  .dica-mobile { display: block; }
+  th, td { padding: 14px 10px; font-size: 13px; }
+  .acoes button { padding: 8px 12px; }
+}

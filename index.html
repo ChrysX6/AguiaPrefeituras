@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle de Empresas - Prefeituras 2026</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Tela de login -->
+  <div id="loginOverlay" class="modal-overlay">
+    <div class="modal-box login-box">
+      <div class="logo-wrap logo-wrap-login">
+        <img src="https://chrysx6.github.io/LinksAguiaContab/links/img/logo1.jpg" alt="Águia Contab Tatuapé" class="logo-img">
+      </div>
+      <h2>Controle de Empresas</h2>
+      <p class="login-subtitulo">Digite a senha para acessar</p>
+      <form id="formLogin">
+        <label>Senha
+          <input type="password" id="loginSenha" required autofocus>
+        </label>
+        <p id="loginErro" class="login-erro"></p>
+        <button type="submit" class="btn-primary btn-full">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Aplicação -->
+  <div id="appContainer" class="hidden">
+    <header>
+      <div class="header-brand">
+        <div class="logo-wrap">
+          <img src="https://chrysx6.github.io/LinksAguiaContab/links/img/logo1.jpg" alt="Águia Contab Tatuapé" class="logo-img">
+        </div>
+        <div class="header-titles">
+          <h1>Controle de Empresas</h1>
+          <span class="header-subtitle">Prefeituras 2026 · Águia Contab Tatuapé</span>
+        </div>
+      </div>
+      <div class="header-acoes">
+        <button id="btnNovo" class="btn-primary">+ Nova Empresa</button>
+        <button id="btnSair" class="btn-secundario">Sair</button>
+      </div>
+    </header>
+
+    <section class="filtros">
+      <input type="text" id="busca" placeholder="Buscar por nome, CNPJ ou sócio...">
+      <select id="filtroCategoria">
+        <option value="">Todas as Categorias</option>
+        <option value="Serviço">Serviço</option>
+        <option value="Comércio">Comércio</option>
+        <option value="MEI">MEI</option>
+        <option value="Associação">Associação</option>
+        <option value="Sem Movimento">Sem Movimento</option>
+      </select>
+      <select id="filtroRegime">
+        <option value="">Todos os Regimes</option>
+        <option value="P">Presumido</option>
+        <option value="S">Simples</option>
+        <option value="R">Real</option>
+      </select>
+      <label class="checkbox-filtro">
+        <input type="checkbox" id="filtroAtivo"> Somente ativas
+      </label>
+    </section>
+
+    <p class="dica-mobile">💡 Toque em uma célula para editar só aquele dado. Use o ✏️ para editar todos os campos da empresa.</p>
+
+    <section class="tabela-container">
+      <table id="tabelaEmpresas">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CNPJ/CPF</th>
+            <th>Categoria</th>
+            <th>Regime</th>
+            <th>Login</th>
+            <th>Senha</th>
+            <th>Estado</th>
+            <th>Sócio</th>
+            <th>Ativo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabela"></tbody>
+      </table>
+    </section>
+
+    <!-- Modal de cadastro/edição -->
+    <div id="modal" class="modal-overlay hidden">
+      <div class="modal-box">
+        <h2 id="modalTitulo">Nova Empresa</h2>
+        <form id="formEmpresa">
+          <input type="hidden" id="rowIndex">
+          <label>Nome<input type="text" id="Nome" required></label>
+          <label>CNPJ/CPF<input type="text" id="CNPJ_CPF"></label>
+          <label>Categoria
+            <select id="Categoria">
+              <option>Serviço</option>
+              <option>Comércio</option>
+              <option>MEI</option>
+              <option>Associação</option>
+              <option>Sem Movimento</option>
+            </select>
+          </label>
+          <label>Regime
+            <select id="Regime">
+              <option value="P">Presumido</option>
+              <option value="S">Simples</option>
+              <option value="R">Real</option>
+            </select>
+          </label>
+          <label>Código SN<input type="text" id="Codigo_SN"></label>
+          <label>Login<input type="text" id="Login"></label>
+          <label>Senha<input type="text" id="Senha"></label>
+          <label>Estado Prefeitura<input type="text" id="Estado_Prefeitura"></label>
+          <label>E-mail<input type="text" id="Email"></label>
+          <label>Sócio<input type="text" id="Socio"></label>
+          <label>Entrada<input type="date" id="Entrada"></label>
+          <label>Saída<input type="date" id="Saida"></label>
+          <label>Responsável<input type="text" id="Responsavel"></label>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="Ativo" checked> Empresa Ativa
+          </label>
+          <div class="modal-botoes">
+            <button type="submit" class="btn-primary">Salvar</button>
+            <button type="button" id="btnCancelar" class="btn-secundario">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
