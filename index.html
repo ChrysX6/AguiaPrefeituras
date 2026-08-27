@@ -38,56 +38,90 @@
           <span class="header-subtitle">Prefeituras 2026 · Águia Contab Tatuapé</span>
         </div>
       </div>
-      <div class="header-acoes">
-        <button id="btnNovo" class="btn-primary">+ Nova Empresa</button>
-        <button id="btnSair" class="btn-secundario">Sair</button>
-      </div>
+      <button id="btnSair" class="btn-secundario">Sair</button>
     </header>
 
-    <section class="filtros">
-      <input type="text" id="busca" placeholder="Buscar por nome, CNPJ ou sócio...">
-      <select id="filtroCategoria">
-        <option value="">Todas as Categorias</option>
-        <option value="Serviço">Serviço</option>
-        <option value="Comércio">Comércio</option>
-        <option value="MEI">MEI</option>
-        <option value="Associação">Associação</option>
-        <option value="Sem Movimento">Sem Movimento</option>
-      </select>
-      <select id="filtroRegime">
-        <option value="">Todos os Regimes</option>
-        <option value="P">Presumido</option>
-        <option value="S">Simples</option>
-        <option value="R">Real</option>
-      </select>
-      <label class="checkbox-filtro">
-        <input type="checkbox" id="filtroAtivo"> Somente ativas
-      </label>
-    </section>
+    <nav class="abas">
+      <button type="button" class="aba-btn ativa" data-aba="empresas">Empresas</button>
+      <button type="button" class="aba-btn" data-aba="emissores">🔗 Emissores</button>
+    </nav>
 
-    <p class="dica-mobile">💡 Toque em uma célula para editar só aquele dado. Use o ✏️ para editar todos os campos da empresa.</p>
+    <!-- Aba: Empresas -->
+    <div id="secaoEmpresas" class="secao">
+      <section class="filtros">
+        <input type="text" id="busca" placeholder="Buscar por nome, CNPJ ou sócio...">
+        <select id="filtroCategoria">
+          <option value="">Todas as Categorias</option>
+          <option value="Serviço">Serviço</option>
+          <option value="Comércio">Comércio</option>
+          <option value="MEI">MEI</option>
+          <option value="Associação">Associação</option>
+          <option value="Sem Movimento">Sem Movimento</option>
+        </select>
+        <select id="filtroRegime">
+          <option value="">Todos os Regimes</option>
+          <option value="P">Presumido</option>
+          <option value="S">Simples</option>
+          <option value="R">Real</option>
+        </select>
+        <label class="checkbox-filtro">
+          <input type="checkbox" id="filtroAtivo"> Somente ativas
+        </label>
+        <button id="btnNovo" class="btn-primary">+ Nova Empresa</button>
+      </section>
 
-    <section class="tabela-container">
-      <table id="tabelaEmpresas">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>CNPJ/CPF</th>
-            <th>Categoria</th>
-            <th>Regime</th>
-            <th>Login</th>
-            <th>Senha</th>
-            <th>Estado</th>
-            <th>Sócio</th>
-            <th>Ativo</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody id="corpoTabela"></tbody>
-      </table>
-    </section>
+      <div id="resumoContadores" class="resumo-contadores"></div>
 
-    <!-- Modal de cadastro/edição -->
+      <p class="dica-mobile">💡 Toque em uma célula para editar só aquele dado. Use o ✏️ para editar todos os campos da empresa.</p>
+
+      <section class="tabela-container">
+        <table id="tabelaEmpresas">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CNPJ/CPF</th>
+              <th>Categoria</th>
+              <th>Regime</th>
+              <th>Login</th>
+              <th>Senha</th>
+              <th>Estado</th>
+              <th>Sócio</th>
+              <th>Ativo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabela"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Aba: Emissores -->
+    <div id="secaoEmissores" class="secao hidden">
+      <section class="filtros">
+        <input type="text" id="buscaEmissor" placeholder="Buscar por cliente ou login...">
+        <button id="btnNovoEmissor" class="btn-primary">+ Novo Emissor</button>
+      </section>
+
+      <p class="dica-mobile">💡 Toque em uma célula para editar só aquele dado. Use o ✏️ para editar tudo, ou "Abrir" pra ir direto ao site do emissor.</p>
+
+      <section class="tabela-container">
+        <table id="tabelaEmissores">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>URL do Emissor</th>
+              <th>Login</th>
+              <th>Senha</th>
+              <th>Observações</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabelaEmissores"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Modal de cadastro/edição — Empresa -->
     <div id="modal" class="modal-overlay hidden">
       <div class="modal-box">
         <h2 id="modalTitulo">Nova Empresa</h2>
@@ -126,6 +160,25 @@
           <div class="modal-botoes">
             <button type="submit" class="btn-primary">Salvar</button>
             <button type="button" id="btnCancelar" class="btn-secundario">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de cadastro/edição — Emissor -->
+    <div id="modalEmissor" class="modal-overlay hidden">
+      <div class="modal-box">
+        <h2 id="modalEmissorTitulo">Novo Emissor</h2>
+        <form id="formEmissor">
+          <input type="hidden" id="emissorRowIndex">
+          <label>Cliente<input type="text" id="emissorNome" required></label>
+          <label>URL do Emissor<input type="text" id="emissorUrl" placeholder="https://..."></label>
+          <label>Login<input type="text" id="emissorLogin"></label>
+          <label>Senha<input type="text" id="emissorSenha"></label>
+          <label>Observações<input type="text" id="emissorObs"></label>
+          <div class="modal-botoes">
+            <button type="submit" class="btn-primary">Salvar</button>
+            <button type="button" id="btnCancelarEmissor" class="btn-secundario">Cancelar</button>
           </div>
         </form>
       </div>
