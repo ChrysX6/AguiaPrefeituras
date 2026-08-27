@@ -19,11 +19,6 @@ header {
   gap: 14px;
 }
 
-.header-acoes {
-  display: flex;
-  gap: 10px;
-}
-
 .logo-wrap {
   background: #fff;
   border-radius: 8px;
@@ -37,6 +32,25 @@ header {
 
 .header-titles h1 { font-size: 19px; margin: 0; line-height: 1.2; }
 .header-subtitle { font-size: 11px; color: #c8a24a; opacity: 0.9; }
+
+.abas {
+  display: flex;
+  gap: 4px;
+  background: #0f2648;
+  padding: 0 26px;
+}
+.aba-btn {
+  background: transparent;
+  border: none;
+  color: #b8c2d6;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+.aba-btn:hover { color: #fff; }
+.aba-btn.ativa { color: #fff; border-bottom-color: #c8a24a; }
 
 .btn-primary {
   background: #2563eb;
@@ -88,6 +102,18 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.resumo-contadores {
+  margin: 0 30px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a1a33;
+  background: #eef2f7;
+  border: 1px solid #dbe3ee;
+  border-radius: 6px;
+  padding: 8px 14px;
+  display: inline-block;
+}
+
 .dica-mobile {
   display: none;
   margin: 0 30px 12px;
@@ -127,11 +153,13 @@ td.salvando { opacity: 0.6; }
   font-family: inherit;
 }
 
+.carregando-senha { color: #94a3b8; font-size: 12px; }
+
 .badge-ativo { color: #16a34a; font-weight: 700; }
 .badge-inativo { color: #dc2626; font-weight: 700; }
 
 .cel-senha { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
-.senha-mascarada { letter-spacing: 1px; }
+.senha-mascarada { letter-spacing: 1px; cursor: pointer; }
 .btn-olho {
   border: none;
   background: transparent;
@@ -141,16 +169,23 @@ td.salvando { opacity: 0.6; }
   border-radius: 4px;
 }
 .btn-olho:hover { background: #e2e8f0; }
+.btn-olho:disabled { opacity: 0.5; cursor: wait; }
 
-.acoes button {
+.acoes { white-space: nowrap; }
+.acoes button, .acoes .btn-abrir {
   border: 2px solid #cbd5e1;
   background: #fff;
+  color: #334155;
   border-radius: 5px;
   padding: 6px 10px;
   margin-right: 4px;
   cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  display: inline-block;
 }
-.acoes button:hover { background: #f1f5f9; }
+.acoes button:hover, .acoes .btn-abrir:hover { background: #f1f5f9; }
+.acoes .btn-abrir { border-color: #BF932C; color: #8a6a1f; font-weight: 600; }
 
 .modal-overlay {
   position: fixed; inset: 0;
@@ -185,6 +220,7 @@ td.salvando { opacity: 0.6; }
   font-size: 14px;
 }
 .modal-botoes { display: flex; gap: 10px; margin-top: 16px; }
+.modal-box button[disabled] { opacity: 0.6; cursor: wait; }
 
 .login-box { width: 340px; text-align: center; }
 .logo-wrap-login { display: inline-flex; margin-bottom: 14px; }
@@ -196,8 +232,10 @@ td.salvando { opacity: 0.6; }
 /* Ajustes para toque em celular */
 @media (max-width: 720px) {
   header { padding: 14px 16px; }
+  .abas { padding: 0 16px; }
   .filtros, .tabela-container { padding-left: 16px; padding-right: 16px; }
+  .resumo-contadores { margin-left: 16px; margin-right: 16px; }
   .dica-mobile { display: block; }
   th, td { padding: 14px 10px; font-size: 13px; }
-  .acoes button { padding: 8px 12px; }
+  .acoes button, .acoes .btn-abrir { padding: 8px 12px; }
 }
